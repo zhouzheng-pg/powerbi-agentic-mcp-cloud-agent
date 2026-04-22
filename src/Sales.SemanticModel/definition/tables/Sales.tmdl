@@ -71,6 +71,18 @@ table Sales
 		formatString: $ #,##0
 		lineageTag: 3e5cb67e-a411-476f-ad34-7ec10dfd084d
 
+	measure 'Red Sales' = CALCULATE([Sales Amount], 'Product'[Color] = "Red")
+		formatString: $ #,##0
+		lineageTag: 911f9dc8-106a-4f20-832b-55fa2b5ce587
+
+	measure 'Germany Margin' = CALCULATE([Margin], 'Store'[Country] = "Germany")
+		formatString: $ #,##0
+		lineageTag: ee268620-89fa-4dfd-a324-5cda80539fb8
+
+	measure Margin% = DIVIDE([Margin], [Sales Amount])
+		formatString: 0.00%
+		lineageTag: 49bbad57-950e-4c34-8a8c-a37ce363b7bb
+
 	column 'Order Number'
 		dataType: int64
 		formatString: 0
